@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strings"
 )
 
@@ -40,10 +41,9 @@ func (d deck) toString() string {
 	//return cards
 }
 
-//output....
-// 0 ClubsofAce
-// 1 ClubsofTwo
-// 2 Clubsofthree
-// 3 Clubsoffour
-// 4 SpadesofAce
-// 5 SpadesofTwo
+//WriteFile writes data to a file named by filename. Format...
+//func WriteFile(filename string, data []byte, perm fs.FileMode) error
+
+func (d deck) savetofile(filename string) error {
+	return ioutil.WriteFile(filename, []byte(d.toString()), 6666) // this will make a new plain text file and print the putput
+}
