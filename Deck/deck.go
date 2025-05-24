@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
+// NOTE....
+// returning sonething and Printing something is different ...
+// returning means tht particular funtion is returning a particular value...
+// but if the value isnt Printed with using Printf statements it will not be shown in the output
 type deck []string //deck is string typed
 
 func newDeck() deck {
@@ -26,6 +33,11 @@ func (d deck) print() { //deck is already declatred in the main.go
 
 func deal(d deck, handsize int) (deck, deck) {
 	return d[:handsize], d[handsize:]
+}
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",")
+	//return ([]string(d)) //ClubsofAce ClubsofTwo Clubsofthree Clubsoffour Spadeso "if the return type is []string"
+	//return cards
 }
 
 //output....
