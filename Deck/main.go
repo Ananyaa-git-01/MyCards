@@ -4,7 +4,9 @@ func main() {
 	//cards := []string{"hello , ", newCards()}
 	//cards := deck{"hello , ", newCards()} //this is the same as the line above because in the same package we did type deck []string
 	cards := newDeck() //clubs of ace
+	//fmt.Printf("before shuffle %+v \n", cards)
 	cards.shuffle()
+	//fmt.Printf("after shuffle %+v \n", cards)
 	cards.print()
 	//cards := ReadtheFile("My_cards") // to read the file
 	//cards = append(cards, "six of spade ")

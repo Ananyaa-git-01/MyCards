@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 // NOTE....
@@ -16,7 +17,7 @@ type deck []string //deck is string typed
 
 func newDeck() deck {
 	card := deck{}
-	fmt.Println("deck at the start is %+v", deck{})
+	fmt.Printf("deck at the start is %+v", deck{})
 	Cardshelf := []string{"Clubs", "Spades", "heart", "diamond"}
 	CardValue := []string{"Ace", "Two", "three", "four"}
 	for _, shelf := range Cardshelf { //1- Clubs
@@ -24,7 +25,7 @@ func newDeck() deck {
 			card = append(card, shelf+"of"+value) //1 -  Clubs of Ace
 		}
 	}
-	fmt.Println("cards at the end is %+v", card)
+	fmt.Printf("cards at the end is %+v", card)
 	return card //new deck returns the cards
 
 }
@@ -60,7 +61,7 @@ func ReadtheFile(filename string) deck {
 	if err != nil {
 		//option 1 - we can print the error
 		//option 2-  we can print the error and quit the program entirely
-		fmt.Print("error in reading the file %+v", err)
+		fmt.Printf("error in reading the file %+v", err)
 		os.Exit(1)
 	}
 	s := strings.Split(string(bs), " ")
@@ -70,7 +71,11 @@ func ReadtheFile(filename string) deck {
 
 func (d deck) shuffle() {
 	for i := range d {
-		num := rand.Intn(len(d) - 1)
+
+		rand.Seed(time.Now().UnixNano()) // Ensures different shuffle each run
+
+		num := rand.Intn(len(d)) //this will ensure all the numbers are considered for the randomness
+		fmt.Printf("the random number generated %+v", num)
 		d[i], d[num] = d[num], d[i]
 
 	}
